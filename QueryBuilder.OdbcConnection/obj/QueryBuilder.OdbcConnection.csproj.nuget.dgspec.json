@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.OdbcConnection\\QueryBuilder.OdbcConnection.csproj": {}
+  },
+  "projects": {
+    "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.OdbcConnection\\QueryBuilder.OdbcConnection.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.OdbcConnection\\QueryBuilder.OdbcConnection.csproj",
+        "projectName": "QueryBuilder.OdbcConnection",
+        "projectPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.OdbcConnection\\QueryBuilder.OdbcConnection.csproj",
+        "packagesPath": "C:\\Users\\Carlos J\\.nuget\\packages\\",
+        "outputPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.OdbcConnection\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carlos J\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "MSA.NetCore.ODBC": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

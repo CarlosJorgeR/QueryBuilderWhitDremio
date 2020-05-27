@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "f1d63c6d1b5e0d8d9631d53212f4c51a9098f5e3"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "QueryBuilder.OdbcConnection/1.0.0": {
+        "dependencies": {
+          "MSA.NetCore.ODBC": "1.0.3"
+        },
+        "runtime": {
+          "QueryBuilder.OdbcConnection.dll": {}
+        }
+      },
+      "MSA.NetCore.ODBC/1.0.3": {
+        "runtime": {
+          "lib/netstandard1.6/NetCoreODBC.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "QueryBuilder.OdbcConnection/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MSA.NetCore.ODBC/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-45a8GQipfRus6fbTllQqamqc4lbJh/vvtHzuylenEZp0edOEKbMaIJ6l2Kpkr7R6c4jcoImWyP2whhc5O5KFvQ==",
+      "path": "msa.netcore.odbc/1.0.3",
+      "hashPath": "msa.netcore.odbc.1.0.3.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.deps.json
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.runtimeconfig.json
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.runtimeconfig.dev.json
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.dll
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.pdb
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.DremioApi.dll
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.DremioApi.pdb
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.csprojAssemblyReference.cache
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.csproj.CoreCompileInputs.cache
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.AssemblyInfoInputs.cache
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.AssemblyInfo.cs
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.csproj.CopyComplete
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.dll
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.pdb
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.Client.dll
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.Client.pdb

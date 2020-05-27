@@ -1,0 +1,193 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.WebApplication\\QueryBuilder.WebApplication.csproj": {}
+  },
+  "projects": {
+    "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.Client\\QueryBuilder.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.Client\\QueryBuilder.Client.csproj",
+        "projectName": "QueryBuilder.Client",
+        "projectPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.Client\\QueryBuilder.Client.csproj",
+        "packagesPath": "C:\\Users\\Carlos J\\.nuget\\packages\\",
+        "outputPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carlos J\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.DremioApi\\QueryBuilder.DremioApi.csproj": {
+                "projectPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.DremioApi\\QueryBuilder.DremioApi.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.DremioApi\\QueryBuilder.DremioApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.DremioApi\\QueryBuilder.DremioApi.csproj",
+        "projectName": "QueryBuilder.DremioApi",
+        "projectPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.DremioApi\\QueryBuilder.DremioApi.csproj",
+        "packagesPath": "C:\\Users\\Carlos J\\.nuget\\packages\\",
+        "outputPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.DremioApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carlos J\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.WebApplication\\QueryBuilder.WebApplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.WebApplication\\QueryBuilder.WebApplication.csproj",
+        "projectName": "QueryBuilder.WebApplication",
+        "projectPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.WebApplication\\QueryBuilder.WebApplication.csproj",
+        "packagesPath": "C:\\Users\\Carlos J\\.nuget\\packages\\",
+        "outputPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.WebApplication\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Carlos J\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.Client\\QueryBuilder.Client.csproj": {
+                "projectPath": "D:\\Doc\\software\\codigo\\QueryBuilder\\QueryBuilder.Client\\QueryBuilder.Client.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.AspNetCore.Razor.Design": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.2, )"
+            },
+            "Microsoft.NETCore.App": {
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.1.10, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

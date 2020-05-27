@@ -1,0 +1,49 @@
+﻿@using QueryBuilder.Client.Models
+@using QueryBuilder.WebApplication.Models.ViewModels
+@model ViewBasedQuery
+@{
+    ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<form asp-action="Index" method="post" id="catalog">
+
+    @for (int i = 0; i < ViewBag.entitys.Count; i++)
+    {
+        var entity = (Entity)ViewBag.entitys[i];
+        @Html.HiddenFor(m => m.viewBasedQueryEntities[i].Alias)
+        @Html.HiddenFor(m => m.viewBasedQueryEntities[i].TableName)
+        
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    @{
+
+                        <th>nombre</th>
+                        <th>tipo</th>
+                        <th>Selección</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    for (int j = 0; j < entity.atributes.Count; j++)
+                    {
+                        @Html.HiddenFor(m => m.viewBasedQueryEntities[i].fields[j])
+                        var attr = entity.atributes[j];
+                        <tr>
+                            <th>@attr.Name</th>
+                            <th>@attr.Type</th>
+                            <th>@Html.CheckBoxFor(m => m.viewBasedQueryEntities[i].selected[j])</th>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+
+    }
+    <button type="submit">Submit Consult</button>
+</form>

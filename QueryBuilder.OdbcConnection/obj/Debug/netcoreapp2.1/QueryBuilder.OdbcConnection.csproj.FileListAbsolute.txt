@@ -1,0 +1,9 @@
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\bin\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.deps.json
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\bin\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.dll
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\obj\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.csproj.CoreCompileInputs.cache
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\obj\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.AssemblyInfoInputs.cache
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\obj\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.AssemblyInfo.cs
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\bin\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.pdb
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\obj\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.csprojAssemblyReference.cache
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\obj\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.dll
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.OdbcConnection\obj\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.pdb
