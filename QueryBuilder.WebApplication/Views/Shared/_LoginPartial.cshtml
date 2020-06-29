@@ -1,10 +1,10 @@
 ﻿
 @using Microsoft.AspNetCore.Identity
-
+@using QueryBuilder.Client.Services.Interfaces
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
-
-@if (SignInManager.IsSignedIn(User))
+@inject IClient client;
+@if (SignInManager.IsSignedIn(User)&&client.IsAutenticate)
 {
     <ul class="nav navbar-nav navbar-right">
         <li><a asp-area="" asp-controller="Entity" asp-action="Index">Entity</a></li>

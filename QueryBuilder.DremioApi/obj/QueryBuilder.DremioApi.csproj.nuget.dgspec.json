@@ -25,8 +25,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\Common7\\IDE\\Extensions": {},
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
         },
         "frameworks": {
           "netcoreapp2.1": {

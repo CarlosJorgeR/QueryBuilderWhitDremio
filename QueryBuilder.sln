@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryBuilder.OdbcConnection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryBuilder.WebApplication", "QueryBuilder.WebApplication\QueryBuilder.WebApplication.csproj", "{5B925F67-4396-4470-BC61-421EF111A27B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryBuilder.Client", "QueryBuilder.Client\QueryBuilder.Client.csproj", "{A8CAB222-1D85-4666-95B2-73CC724AC2F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryBuilder.Client", "QueryBuilder.Client\QueryBuilder.Client.csproj", "{A8CAB222-1D85-4666-95B2-73CC724AC2F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

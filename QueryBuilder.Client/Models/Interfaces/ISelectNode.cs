@@ -6,5 +6,6 @@ namespace QueryBuilder.Client.Models.Interfaces
 {
     public interface ISelectNode
     {
+        IEnumerable<string> SelectList { get; }
     }
 }

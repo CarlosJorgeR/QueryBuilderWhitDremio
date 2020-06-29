@@ -9,8 +9,11 @@ namespace QueryBuilder.Client.Services.Interfaces
 {
     public interface IClient
     {
+        bool IsAutenticate { get;}
         Task<ILogin> GetLogin(string userName, string password);
+        void Logout();
         Task<List<Entity>> GetEntitys();
-        void ExecuteQuery(List<BasedQueryEntity> basedQueryEntities);
+        Task<List<Entity>> GetApp();
+        IEnumerable<IQueryResult> ExecuteQuery(List<BasedQueryEntity> basedQueryEntities);
     }
 }

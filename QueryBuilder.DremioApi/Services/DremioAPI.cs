@@ -8,6 +8,7 @@ using QueryBuilder.DremioApi.Models.Interfaces;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Mime;
 namespace QueryBuilder.DremioApi.Services
 {
 
@@ -56,31 +57,37 @@ namespace QueryBuilder.DremioApi.Services
                 return Login.Null;
             }
         }
-        public Stream apiPost(string endPoint, string body)
+        public StreamReader apiPost(string endPoint, string body)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create($"{server}/api/v3/{endPoint}");
+            
             request.PreAuthenticate = true;
             request.Method = "POST";
             request.ContentType = "application/json";
-            request.ContentLength = body.Length;
+            var byteArray = System.Text.Encoding.UTF8.GetBytes(body);
+            request.ContentLength = byteArray.Length;
             request.Headers["Authorization"]=token;
-           
             using (Stream webstream = request.GetRequestStream())
-            using (StreamWriter requestWriter = new StreamWriter(webstream, System.Text.Encoding.ASCII))
             {
-                requestWriter.Write(body);
+                webstream.Write(byteArray,0,byteArray.Length);
             }
             try
             {
-                WebResponse webResponse = request.GetResponse();
-                return webResponse.GetResponseStream();
+                var webResponse = (HttpWebResponse)request.GetResponse();
+                var charset = webResponse.CharacterSet;
+                if (string.IsNullOrEmpty(charset))
+                {
+                    charset = "windows-1252";
+                }
+                var encoding = System.Text.Encoding.GetEncoding(charset);
+                return new StreamReader( webResponse.GetResponseStream(),encoding);
                
             }
             catch (Exception e)
             {
                 Console.Out.WriteLine("-----------------------------");
                 Console.Out.WriteLine(e.Message);
-                return Stream.Null ;
+                return StreamReader.Null ;
             }
         }
         public Stream apiGet(string endPoint)
@@ -106,11 +113,14 @@ namespace QueryBuilder.DremioApi.Services
         }
         public DremioData SqlQuery(string query)
         {
+            if (string.IsNullOrEmpty(query))
+                return DremioData.NULL;
             var idStream =apiPost("sql", $"{{\"sql\":\"{query}\"}}");
-            if (!idStream.Equals(Stream.Null))
+            if (!idStream.Equals(StreamReader.Null))
             {
-                var tokenidSer = new DataContractJsonSerializer(typeof(TokenId));
-                var tokenid = (TokenId)tokenidSer.ReadObject(idStream);
+                var tokenid= JsonConvert.DeserializeObject<TokenId>(idStream.ReadToEnd());
+                //var tokenidSer = new DataContractJsonSerializer(typeof(TokenId));
+                //var tokenid = (TokenId)tokenidSer.ReadObject(idStream.);
                 JobState state;
                 //Esperamos que dremio nos mande una respuesta  de la consulta
                 do
@@ -118,6 +128,8 @@ namespace QueryBuilder.DremioApi.Services
                     var jobstateStream = apiGet($"job/{tokenid.id}");
                     var jobstateStreamReader = new StreamReader(jobstateStream);
                     state = JsonConvert.DeserializeObject<JobState>(jobstateStreamReader.ReadToEnd());
+                    if (state.jobState=="FAILED")
+                        return DremioData.NULL;
                 } while (state.jobState!= "COMPLETED");
                 var resultStream = apiGet($"job/{tokenid.id}/results");
                 var streamReader = new StreamReader(resultStream);

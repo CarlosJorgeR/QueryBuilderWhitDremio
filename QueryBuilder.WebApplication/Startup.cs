@@ -34,7 +34,22 @@ namespace QueryBuilder.WebApplication
             services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddDefaultTokenProviders();
-            services.AddSingleton<IClient,DremioClient>(c=>new DremioClient("http://localhost:9047"));
+
+            //Este cliente representa la conexion con el cliente de dremio
+            var client= new DremioClient("http://localhost:9047");
+            services.AddSingleton<IClient,DremioClient>(c=>client);
+
+            //Se anade a la configuracion el permiso IsAuthenticate
+            services.AddAuthorization(options =>
+                {
+                    options.AddPolicy("IsAuthenticate", policy =>
+                        {
+                            policy.RequireAuthenticatedUser();
+                            policy.Requirements.Add(new IsAutenticate(client));
+                        }
+                    );
+                }
+             );
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

@@ -1,0 +1,38 @@
+﻿@using QueryBuilder.Client.Models.Interfaces
+
+@model IEnumerable<IQueryResult>
+@{
+    ViewData["Title"] = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Result</h2>
+
+@foreach (var q in Model)
+{
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                @foreach (var field in q.fields)
+                {
+                    <th>
+                        @($"{field.name}:{field.type}")
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in q.Rows)
+            {
+                <tr>
+                    @foreach (var value in row.values)
+                    {
+                        <th>
+                            @value
+                        </th>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

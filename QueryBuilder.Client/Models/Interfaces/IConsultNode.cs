@@ -6,7 +6,6 @@ namespace QueryBuilder.Client.Models.Interfaces
 {
     public interface IConsultNode
     {
-
         ISelectNode SelectNode { get;}
         IFromNode FromNode { get; }
         IWhereNode WhereNode { get; }

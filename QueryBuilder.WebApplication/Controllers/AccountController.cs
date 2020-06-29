@@ -72,6 +72,7 @@ namespace QueryBuilder.WebApplication.Controllers
         }
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {
+            client.Logout();
             await signInManager.SignOutAsync();
             return Redirect(returnUrl);
         }

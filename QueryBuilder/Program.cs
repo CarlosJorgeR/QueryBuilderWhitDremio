@@ -1,21 +1,27 @@
 ﻿using System;
 using QueryBuilder;
 using System.IO;
-
+using QueryBuilder.DremioApi.Services;
+using System.Linq;
 namespace QueryBuilder
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //var client = new DremioClient("http://localhost:9047");
+            var client = new DremioAPI("http://localhost:9047");
+            client.login("CarlosJ", "CCr.5180").Wait();
+            //var result=client.SqlQuery("select * from Dev.Application.Empresa_Compra");
+            var results3 = client.GetCatalogByPath("Dev/Business").ToList();
+            var result2 = client.SqlQuery("SELECT compras.fecha,compras.cliente FROM Dev.Business.compras as compras ");
+            Console.WriteLine(result2);
             //client.GetLogin("CarlosJ", "CCr.5180");
             //client.GetEntitys();
             //var dremioApi = new DremioAPI("http://localhost:9047");
             //var a=dremioApi.login("CarlosJ", "CCr.5180");
             //while (!a.IsCompleted)
             //{
-                
+
             //}
             //var result=new StreamReader(dremioApi.apiGet("user")).ReadToEnd();
             ////var dejavel = dremioApi.GetCatalogByPath("MysqlSource");

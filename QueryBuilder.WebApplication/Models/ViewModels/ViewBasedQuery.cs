@@ -22,14 +22,39 @@ namespace QueryBuilder.WebApplication.Models.ViewModels
         public string TableName { get; set; }
         public string Alias { get; set; }
         public List<string> fields { get; set; }
+        public List<ViewPredicate> viewPredicates { get; set; }
         public BasedQueryEntity GetBasedQueryEntity()
         {
             return new BasedQueryEntity() {
                 TableName =TableName,
                 Alias =Alias,
                 Outputs =fields.Zip(selected, (f, b) => b ? f : null).
-                Where(f => f != null).ToList()
+                Where(f => f != null).ToList(),
+                predicates=viewPredicates.Select(p=>p.GetPredicate()).Where(p => p != null).ToList()
         };
+        }
+    }
+    public class ViewPredicate
+    {
+        public string fieldName { get; set; }
+        public BasicTypes BasicType { get; set; }
+        public OperatorType? Operator { get; set; }
+        public string expression1 { get; set; }
+        public string expression2 { get; set; }
+        public AbstractPredicate GetPredicate()
+        {
+            if (!Operator.HasValue)
+            {
+                return null;
+            }
+            else if (Operator.Value == OperatorType.Between)
+            {
+                return new BetweenPredicate(fieldName, expression2, expression1, BasicType);
+            }
+            else
+            {
+                return new BasicPredicate(fieldName,(OperatorTypeBin)Operator.Value, BasicType, expression1);
+            }
         }
     }
 
