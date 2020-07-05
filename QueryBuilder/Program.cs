@@ -11,10 +11,13 @@ namespace QueryBuilder
         {
             var client = new DremioAPI("http://localhost:9047");
             client.login("CarlosJ", "CCr.5180").Wait();
-            //var result=client.SqlQuery("select * from Dev.Application.Empresa_Compra");
+            var result=client.SqlQuery("select * from Dev.Application.Empresa_Compra");
+            Console.WriteLine(result);
             var results3 = client.GetCatalogByPath("Dev/Business").ToList();
-            var result2 = client.SqlQuery("SELECT compras.fecha,compras.cliente FROM Dev.Business.compras as compras ");
-            Console.WriteLine(result2);
+            //client.CreateVDS("Dev.Business.Algo", "SELECT compras.fecha,compras.cliente FROM Dev.Business.compras as compras ");
+            //client.DropVDS("Dev.Business.Algo");
+            var result2 = client.Replace("Dev.Application.Algo", "SELECT \"nombre\", \"tipo\", \"sitio\" FROM \"Dev\".\"Business\".\"empresas\"");
+            //Console.WriteLine(result2);
             //client.GetLogin("CarlosJ", "CCr.5180");
             //client.GetEntitys();
             //var dremioApi = new DremioAPI("http://localhost:9047");

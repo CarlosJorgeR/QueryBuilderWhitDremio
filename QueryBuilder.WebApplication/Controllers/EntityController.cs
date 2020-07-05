@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using QueryBuilder.Client.Services.Interfaces;
 using QueryBuilder.WebApplication.Models.ViewModels;
 using QueryBuilder.Client.Models;
+using QueryBuilder.Client.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Security.Claims;
 
@@ -25,7 +26,8 @@ namespace QueryBuilder.WebApplication.Controllers
         public async Task<IActionResult> Index()
         {
             //var password= 
-            var entitys = await client.GetEntitys();
+            var entitys = client.Entities;
+            //entitys.AddRange(client.Apps);
 
             ViewBag.entitys = entitys;
             return View(new ViewBasedQuery {
@@ -48,6 +50,45 @@ namespace QueryBuilder.WebApplication.Controllers
             var results= client.ExecuteQuery(query);
             var algo = results.ToList();
             return View("Result",algo);
+        }
+        public async Task<IActionResult> Apps()
+        {
+            var apps = client.Apps;
+            ViewBag.apps = apps;
+            return View();
+
+        }
+
+        public async Task<IActionResult> Query()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Query(ViewQuery viewQuery)
+        {
+            IQueryState state;
+            if (client.Apps.Any(a => a.Alias == viewQuery.path))
+            {
+                state=client.ReplaceVDS(viewQuery.path, viewQuery.query);
+                if (!state.IsCorrect)
+                    ModelState.AddModelError(nameof(viewQuery.query), "La consulta no es valida para modificar la Tabla virtual");
+            }
+            else
+            {
+                state=client.CreateVDS(viewQuery.path, viewQuery.query);
+                if (!state.IsCorrect)
+                    ModelState.AddModelError(nameof(viewQuery.query), "La consulta no es valida para crear la Tabla virtual");
+            }
+            if (!ModelState.IsValid)
+                return View(viewQuery);
+            return Redirect("Apps");
+        }
+        public async Task<IActionResult> Edit(string id)
+        {
+            var app = client.Apps.Single(a => a.RealName == id) as VirtualEntity;
+            return View("Query",
+                        new ViewQuery {query=app.sql, path=app.Alias});
         }
     }
 }

@@ -528,7 +528,8 @@
       },
       "QueryBuilder.DremioApi/1.0.0": {
         "dependencies": {
-          "Newtonsoft.Json": "11.0.2"
+          "Newtonsoft.Json": "11.0.2",
+          "System.Text.Encoding.CodePages": "4.5.0"
         },
         "runtime": {
           "QueryBuilder.DremioApi.dll": {}
@@ -3300,6 +3301,9 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.0",
           "System.Runtime.CompilerServices.Unsafe": "4.5.1"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
         },
         "compileOnly": true
       },

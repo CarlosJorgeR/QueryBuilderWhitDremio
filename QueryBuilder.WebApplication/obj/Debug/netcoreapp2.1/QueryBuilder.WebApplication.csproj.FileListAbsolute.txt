@@ -38,3 +38,5 @@ D:\Doc\software\codigo\QueryBuilder\QueryBuilder.WebApplication\bin\Debug\netcor
 D:\Doc\software\codigo\QueryBuilder\QueryBuilder.WebApplication\bin\Debug\netcoreapp2.1\QueryBuilder.DremioApi.pdb
 D:\Doc\software\codigo\QueryBuilder\QueryBuilder.WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Entity\Index.g.cshtml.cs
 D:\Doc\software\codigo\QueryBuilder\QueryBuilder.WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Entity\Result.g.cshtml.cs
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Entity\Query.g.cshtml.cs
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder.WebApplication\obj\Debug\netcoreapp2.1\Razor\Views\Entity\Apps.g.cshtml.cs

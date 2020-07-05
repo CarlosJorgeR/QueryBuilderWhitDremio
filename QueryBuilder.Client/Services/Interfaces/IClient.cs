@@ -12,8 +12,11 @@ namespace QueryBuilder.Client.Services.Interfaces
         bool IsAutenticate { get;}
         Task<ILogin> GetLogin(string userName, string password);
         void Logout();
-        Task<List<Entity>> GetEntitys();
-        Task<List<Entity>> GetApp();
+        List<Entity> Entities { get;  }
+        List<VirtualEntity> Apps { get; }
         IEnumerable<IQueryResult> ExecuteQuery(List<BasedQueryEntity> basedQueryEntities);
+        IQueryResult ExecuteQuery(string query);
+        IQueryState CreateVDS(string Name, string query);
+        IQueryState ReplaceVDS(string Name, string query);
     }
 }

@@ -15,8 +15,8 @@
         var entity = (Entity)ViewBag.entitys[i];
         @Html.HiddenFor(m => m.viewBasedQueryEntities[i].Alias)
         @Html.HiddenFor(m => m.viewBasedQueryEntities[i].TableName)
-        //@Html.HiddenFor(m => m.viewBasedQueryEntities[i].viewPredicates)
-        <table class="table table-sm table-striped table-bordered">
+        <h2>@entity.Alias</h2>
+        <table class="table table-sm table-striped table-bordered" >
             <thead>
                 <tr>
                     @{
@@ -40,7 +40,7 @@
                             <th>@attr.Type</th>
                             <th>
                                 @Html.CheckBoxFor(m => m.viewBasedQueryEntities[i].selected[j],
-             new { id = $"{entity.Alias}_{attr.Name}", @class = "select-field" })
+new { id = $"{entity.Alias}_{attr.Name}", @class = "select-field" })
                             </th>
                             <th>
                                 <div>
@@ -50,23 +50,23 @@
                                         @Html.HiddenFor(model => model.viewBasedQueryEntities[i].viewPredicates[j].BasicType)
                                         @Html.HiddenFor(model => model.viewBasedQueryEntities[i].viewPredicates[j].fieldName)
                                         @Html.DropDownListFor(model => model.viewBasedQueryEntities[i].viewPredicates[j].Operator,
-                                         new List<SelectListItem> { new SelectListItem("---", "") }.Concat(attr.Listoperators.Select(a => new SelectListItem(a.ToString(), a.ToString()))),
-                                         new { id = $"where-select_{entity.Alias}_{attr.Name}", @class = "where-select" })
+              new List<SelectListItem> { new SelectListItem("---", "") }.Concat(attr.Listoperators.Select(a => new SelectListItem(a.ToString(), a.ToString()))),
+              new { id = $"where-select_{entity.Alias}_{attr.Name}", @class = "where-select" })
 
                                         <p>
                                             <input id="@($"form-where-select_{entity.Alias}_{attr.Name}")"
                                                    asp-for=viewBasedQueryEntities[i].viewPredicates[j].expression1
                                                    type="@((attr.IsDate) ? "Date" : (attr.IsNumeric) ? "number" : "text")"
-                                                   style="@((!Model.viewBasedQueryEntities[i].viewPredicates.Any(p=>p?.fieldName==attr.Name)
-                                                    ||Model.viewBasedQueryEntities[i].viewPredicates.First(p=>p?.fieldName==attr.Name).Operator==null) ? "display: none;" : "")" />
+                                                   style="@((!Model.viewBasedQueryEntities[i].viewPredicates.Any(p => p?.fieldName == attr.Name)
+      || Model.viewBasedQueryEntities[i].viewPredicates.First(p => p?.fieldName == attr.Name).Operator == null) ? "display: none;" : "")" />
                                         </p>
                                         <p>
                                             <input id="@($"form2-where-select_{entity.Alias}_{attr.Name}")"
                                                    asp-for=viewBasedQueryEntities[i].viewPredicates[j].expression2
                                                    type="@((attr.IsDate) ? "Date" : (attr.IsNumeric) ? "number" : "text")"
-                                                   style="@((!Model.viewBasedQueryEntities[i].viewPredicates.Any(p=>p?.fieldName==attr.Name)
-                                                    ||Model.viewBasedQueryEntities[i].viewPredicates.First(p=>p.fieldName==attr.Name).Operator==null
-                                                    ||Model.viewBasedQueryEntities[i].viewPredicates.First(p=>p.fieldName==attr.Name).Operator!=OperatorType.Between) ? "display: none;" : "")" />
+                                                   style="@((!Model.viewBasedQueryEntities[i].viewPredicates.Any(p => p?.fieldName == attr.Name)
+      || Model.viewBasedQueryEntities[i].viewPredicates.First(p => p.fieldName == attr.Name).Operator == null
+      || Model.viewBasedQueryEntities[i].viewPredicates.First(p => p.fieldName == attr.Name).Operator != OperatorType.Between) ? "display: none;" : "")" />
                                         </p>
                                     </div>
                                 </div>
@@ -81,6 +81,8 @@
     }
     <button type="submit">Submit Consult</button>
 </form>
+
+
 @section scripts
 {
     <script>

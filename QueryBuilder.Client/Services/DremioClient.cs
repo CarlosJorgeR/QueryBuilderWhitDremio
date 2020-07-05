@@ -31,9 +31,8 @@ namespace QueryBuilder.Client.Services
         {
             IsAutenticate = false;
         }
-        public async Task<List<Entity>> GetEntitys()
-        {
-            return dremioAPI.GetCatalogByPath("Dev/Business")
+        public List<Entity> Entities=>
+            dremioAPI.GetCatalogByPath("Dev/Business")
                             .Where(ds => ds is Dataset)
                             .Cast<Dataset>()
                             .Select(
@@ -44,21 +43,22 @@ namespace QueryBuilder.Client.Services
                                     atributes = ds.fields.Select(f=>new Entity_Attribute(f.Item1,f.Item2) ).ToList()
                                 }
                             ).ToList();
-        }
-        public async Task<List<Entity>> GetApp()
-        {
-            return dremioAPI.GetCatalogByPath("Dev/Application")
-                            .Where(ds => ds is Dataset)
-                            .Cast<Dataset>()
+        
+        public List<VirtualEntity> Apps=> 
+            dremioAPI.GetCatalogByPath("Dev/Application")
+                            .Where(ds => ds is VirtualDataset)
+                            .Cast<VirtualDataset>()
                             .Select(
-                                ds => new Entity()
+                                ds => new VirtualEntity()
                                 {
                                     RealName = ds.url2,
                                     Alias = ds.TableName,
-                                    atributes = ds.fields.Select(f => new Entity_Attribute(f.Item1, f.Item2)).ToList()
+                                    atributes = ds.fields.Select(f => new Entity_Attribute(f.Item1, f.Item2)).ToList(),
+                                    sql=ds.sql
+                                    
                                 }
                             ).ToList();
-        }
+        
         public IEnumerable<IQueryResult> ExecuteQuery(List<BasedQueryEntity> basedQueryEntities)
         {
             var queryBuilder = new QueryBuilder(basedQueryEntities);
@@ -67,7 +67,28 @@ namespace QueryBuilder.Client.Services
                 var result = dremioAPI.SqlQuery(q.ToString());
                 return new QueryResultDremio(result);
             }).ToList();
-            
+        }
+        public IQueryState CreateVDS(string Name, string query)
+        {
+            if (Apps.Any(a=>a.Alias==Name))
+               return new QueryStateDremio(
+                   dremioAPI.CreateVDS($"Dev.Application.{Name}", query)
+                    );
+            return QueryStateDremio.Null;
+
+        }
+
+        public IQueryState ReplaceVDS(string Name, string query)
+        {
+            if (Apps.Any(a => a.Alias == Name))
+                return new QueryStateDremio(
+                    dremioAPI.Replace($"Dev.Application.{Name}", query)
+                     );
+            return QueryStateDremio.Null;
+        }
+        public IQueryResult ExecuteQuery(string query)
+        {
+            return new QueryResultDremio(dremioAPI.SqlQuery(query));
         }
 
     }

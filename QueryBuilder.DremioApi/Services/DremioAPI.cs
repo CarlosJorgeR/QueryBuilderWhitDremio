@@ -75,11 +75,9 @@ namespace QueryBuilder.DremioApi.Services
             {
                 var webResponse = (HttpWebResponse)request.GetResponse();
                 var charset = webResponse.CharacterSet;
-                if (string.IsNullOrEmpty(charset))
-                {
-                    charset = "windows-1252";
-                }
-                var encoding = System.Text.Encoding.GetEncoding(charset);
+
+                var encoding = string.IsNullOrEmpty(charset)? System.Text.CodePagesEncodingProvider.Instance.GetEncoding(1252):
+                                                    System.Text.Encoding.GetEncoding(charset);
                 return new StreamReader( webResponse.GetResponseStream(),encoding);
                
             }
@@ -116,11 +114,41 @@ namespace QueryBuilder.DremioApi.Services
             if (string.IsNullOrEmpty(query))
                 return DremioData.NULL;
             var idStream =apiPost("sql", $"{{\"sql\":\"{query}\"}}");
+            TokenId tokenid = new TokenId();
+            if (JobId(idStream,out tokenid)==jobState.COMPLETED)
+            {
+                var resultStream = apiGet($"job/{tokenid.id}/results");
+                var streamReader = new StreamReader(resultStream);
+                return JsonConvert.DeserializeObject<DremioData>(streamReader.ReadToEnd());
+            }
+            return DremioData.NULL;
+        }
+        public jobState CreateVDS(string path, string query)
+
+        {
+            if (string.IsNullOrEmpty(query))
+                return jobState.FAILED;
+            var idStream = apiPost("sql", $"{{\"sql\":\"CREATE VDS {path} as {query}\"}}");
+            return JobId(idStream, out _);
+        }
+        public jobState Replace(string path, string query)
+        {
+            if (string.IsNullOrEmpty(query))
+                return jobState.FAILED;
+            var idStream = apiPost("sql", $"{{\"sql\":\"CREATE OR REPLACE VDS {path} as {query}\"}}");
+            return JobId(idStream, out _);
+        }
+        public jobState DropVDS(string path)
+        {
+            var idStream= apiPost("sql", $"{{\"sql\":\"DROP VDS {path}\"}}");
+            return JobId(idStream,out _);
+            
+        }
+        public jobState JobId(StreamReader idStream,out TokenId tokenid)
+        {
             if (!idStream.Equals(StreamReader.Null))
             {
-                var tokenid= JsonConvert.DeserializeObject<TokenId>(idStream.ReadToEnd());
-                //var tokenidSer = new DataContractJsonSerializer(typeof(TokenId));
-                //var tokenid = (TokenId)tokenidSer.ReadObject(idStream.);
+                tokenid = JsonConvert.DeserializeObject<TokenId>(idStream.ReadToEnd());
                 JobState state;
                 //Esperamos que dremio nos mande una respuesta  de la consulta
                 do
@@ -128,14 +156,15 @@ namespace QueryBuilder.DremioApi.Services
                     var jobstateStream = apiGet($"job/{tokenid.id}");
                     var jobstateStreamReader = new StreamReader(jobstateStream);
                     state = JsonConvert.DeserializeObject<JobState>(jobstateStreamReader.ReadToEnd());
-                    if (state.jobState=="FAILED")
-                        return DremioData.NULL;
-                } while (state.jobState!= "COMPLETED");
-                var resultStream = apiGet($"job/{tokenid.id}/results");
-                var streamReader = new StreamReader(resultStream);
-                return JsonConvert.DeserializeObject<DremioData>(streamReader.ReadToEnd());
+                    if (state.jobState == "FAILED")
+                    {
+                        return jobState.FAILED;
+                    }
+                } while (state.jobState != "COMPLETED");
+                return jobState.COMPLETED;
             }
-            return DremioData.NULL;
+            tokenid = new TokenId();
+            return jobState.FAILED;
         }
         public IEnumerable<ISource> GetCatalog()
         {
@@ -157,7 +186,16 @@ namespace QueryBuilder.DremioApi.Services
                 {
                     idStream = apiGet($"catalog/by-path/{result.url}");
                     streamReader = new StreamReader(idStream);
-                    var metada = JsonConvert.DeserializeObject<Dremio_Dataset>(streamReader.ReadToEnd());
+                    var metadataStr = streamReader.ReadToEnd();
+                    var metada = JsonConvert.DeserializeObject<Dremio_Dataset>(metadataStr);
+                    switch (metada.type)
+                    {
+                        case "VIRTUAL_DATASET":
+                            metada = JsonConvert.DeserializeObject<Dremio_VirtualDataSet>(metadataStr);
+                            break;
+                        default:
+                            break;
+                    }
                     result = metada.GetTable();
                 }
                 catch (Exception){

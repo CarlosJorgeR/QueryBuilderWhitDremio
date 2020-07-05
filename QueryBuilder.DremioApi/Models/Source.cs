@@ -28,5 +28,15 @@ namespace QueryBuilder.DremioApi.Models
             this.fields = fields.ToList();
         }
     }
+    public class VirtualDataset : Dataset
+    {
+        public VirtualDataset(IEnumerable<(string, string)> fields, IEnumerable<string> path,string sql):base(fields,path)
+        {
+            this.sql = sql.Replace("\"",string.Empty).Replace("\n"," ");
+        }
+
+        public string sql { get; set; }
+
+    }
    
 }

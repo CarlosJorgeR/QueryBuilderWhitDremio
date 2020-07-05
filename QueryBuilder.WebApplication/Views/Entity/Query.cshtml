@@ -1,0 +1,23 @@
+﻿@using QueryBuilder.Client.Models.Interfaces
+@using QueryBuilder.WebApplication.Models.ViewModels
+@model ViewQuery
+@{
+    ViewData["Title"] = "Query";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Query</h2>
+@using(Html.BeginForm("Query","Entity"))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => model.path)
+        @Html.TextBoxFor(model => model.path, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.query)
+        @Html.TextBoxFor(model => model.query, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.query)
+    </div>
+    <button type="submit" class="btn btn-primary">Crear tabla virtual</button>
+}
+

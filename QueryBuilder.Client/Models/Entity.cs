@@ -60,4 +60,9 @@ namespace QueryBuilder.Client.Models
             Type= Enum.Parse<BasicTypes>(type);
         }
     }
+
+    public class VirtualEntity:Entity
+    {
+        public string sql { get; set; }
+    }
 }
