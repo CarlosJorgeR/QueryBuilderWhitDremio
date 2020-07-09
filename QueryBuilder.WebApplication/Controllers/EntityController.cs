@@ -12,6 +12,7 @@ using QueryBuilder.Client.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Security.Claims;
 
+
 namespace QueryBuilder.WebApplication.Controllers
 {
     [Authorize(Policy = "IsAuthenticate")]
@@ -25,6 +26,7 @@ namespace QueryBuilder.WebApplication.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+
             //var password= 
             var entitys = client.Entities;
             //entitys.AddRange(client.Apps);
@@ -61,14 +63,16 @@ namespace QueryBuilder.WebApplication.Controllers
 
         public async Task<IActionResult> Query()
         {
-            return View();
+            return View(new ViewQuery {action=ActionQuery.Create });
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Query(ViewQuery viewQuery)
         {
+            if (!ModelState.IsValid)
+                return View(viewQuery);
             IQueryState state;
-            if (client.Apps.Any(a => a.Alias == viewQuery.path))
+            if (viewQuery.action.Value==ActionQuery.Edit)
             {
                 state=client.ReplaceVDS(viewQuery.path, viewQuery.query);
                 if (!state.IsCorrect)
@@ -77,6 +81,8 @@ namespace QueryBuilder.WebApplication.Controllers
             else
             {
                 state=client.CreateVDS(viewQuery.path, viewQuery.query);
+                if (client.Apps.Any(a=>a.Alias== viewQuery.path))
+                    ModelState.AddModelError(nameof(viewQuery.path), "Ya existe esta tabla virtual");
                 if (!state.IsCorrect)
                     ModelState.AddModelError(nameof(viewQuery.query), "La consulta no es valida para crear la Tabla virtual");
             }
@@ -88,7 +94,7 @@ namespace QueryBuilder.WebApplication.Controllers
         {
             var app = client.Apps.Single(a => a.RealName == id) as VirtualEntity;
             return View("Query",
-                        new ViewQuery {query=app.sql, path=app.Alias});
+                        new ViewQuery {query=app.sql, path=app.Alias, action = ActionQuery.Edit });
         }
     }
 }

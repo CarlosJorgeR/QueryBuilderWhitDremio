@@ -16,7 +16,7 @@
         @Html.HiddenFor(m => m.viewBasedQueryEntities[i].Alias)
         @Html.HiddenFor(m => m.viewBasedQueryEntities[i].TableName)
         <h2>@entity.Alias</h2>
-        <table class="table table-sm table-striped table-bordered" >
+        <table  class="table table-sm table-striped table-bordered">
             <thead>
                 <tr>
                     @{
@@ -87,6 +87,7 @@ new { id = $"{entity.Alias}_{attr.Name}", @class = "select-field" })
 {
     <script>
         $(document).ready(function () {
+            //$("#entity").DataTable();
 
             $("select[class=where-select]").on("change", function () {
                 var id = $(this).attr('id');
@@ -105,14 +106,14 @@ new { id = $"{entity.Alias}_{attr.Name}", @class = "select-field" })
                 }
 
             });
-             $("#catalog input[type='checkbox'].select-field").on("click", function () {
-                 var id = $(this).attr('id');
-                 console.log(id);
+            $("#catalog input[type='checkbox'].select-field").on("click", function () {
+                var id = $(this).attr('id');
+                console.log(id);
                 if ($(this).is(":checked")) {
-                    $("#where_"+id).show();
+                    $("#where_" + id).show();
                 }
                 else {
-                    $("#where_"+id).hide();
+                    $("#where_" + id).hide();
                 }
             });
 

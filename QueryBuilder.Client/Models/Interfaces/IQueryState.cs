@@ -6,6 +6,6 @@ namespace QueryBuilder.Client.Models.Interfaces
 {
     public interface IQueryState
     {
-        bool IsCorrect { get; }
+       bool IsCorrect { get; }
     }
 }

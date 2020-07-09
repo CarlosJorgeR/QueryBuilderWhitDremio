@@ -82,7 +82,7 @@ using QueryBuilder.Client.Services.Interfaces;
             WriteLiteral("    <ul class=\"nav navbar-nav navbar-right\">\r\n        <li>");
             EndContext();
             BeginContext(332, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c44203b490c844c08f672b906b253799", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "78471882c3d94be18d92adb10525816e", async() => {
                 BeginContext(390, 6, true);
                 WriteLiteral("Entity");
                 EndContext();
@@ -108,7 +108,7 @@ using QueryBuilder.Client.Services.Interfaces;
             WriteLiteral("</li>\r\n        <li>");
             EndContext();
             BeginContext(419, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "790009bece4947af9a84ee3512b321bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c41bfc19e944031bfeaf14f4e297190", async() => {
                 BeginContext(476, 4, true);
                 WriteLiteral("Apps");
                 EndContext();
@@ -134,7 +134,7 @@ using QueryBuilder.Client.Services.Interfaces;
             WriteLiteral("</li>\r\n        <li>");
             EndContext();
             BeginContext(503, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "acb9562c82e74443978796501f3680f1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "308ca9524066472ab142d9cbb15cf6fe", async() => {
                 BeginContext(561, 5, true);
                 WriteLiteral("Query");
                 EndContext();
@@ -160,7 +160,7 @@ using QueryBuilder.Client.Services.Interfaces;
             WriteLiteral("</li>\r\n        <li>\r\n            ");
             EndContext();
             BeginContext(603, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2fd1becd30e45659a5987f615786d9b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "107c88284e3b41c39d15413e83f5d23a", async() => {
                 BeginContext(641, 6, true);
                 WriteLiteral("Hello ");
                 EndContext();
@@ -193,7 +193,7 @@ using QueryBuilder.Client.Services.Interfaces;
             WriteLiteral("\r\n        </li>\r\n        <li>");
             EndContext();
             BeginContext(711, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5c1bf14dba844da9bff1cfbb2187260a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88fb83d39e6f4242aa8f6e58120121fe", async() => {
                 BeginContext(771, 6, true);
                 WriteLiteral("Logout");
                 EndContext();
@@ -232,7 +232,7 @@ else
             WriteLiteral("        <li>");
             EndContext();
             BeginContext(956, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dcddac881ced4e43b9c1ead2c5d6869a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e50f8347385e467698862242b4f49bb9", async() => {
                 BeginContext(1023, 5, true);
                 WriteLiteral("Login");
                 EndContext();

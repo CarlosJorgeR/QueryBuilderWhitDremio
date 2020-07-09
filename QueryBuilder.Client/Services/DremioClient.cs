@@ -86,9 +86,14 @@ namespace QueryBuilder.Client.Services
                      );
             return QueryStateDremio.Null;
         }
-        public IQueryResult ExecuteQuery(string query)
+        public IQuery ExecuteQuery(string query)
         {
-            return new QueryResultDremio(dremioAPI.SqlQuery(query));
+            var result= new QueryResultDremio(dremioAPI.SqlQuery(query));
+            if (result.fields == null||result.fields.Count()==0)
+                return new BaseQuery(result, QueryStateDremio.Null);
+            else
+                return new BaseQuery(result, new QueryStateDremio(jobState.COMPLETED));
+
         }
 
     }

@@ -7,17 +7,91 @@
 }
 
 <h2>Query</h2>
-@using(Html.BeginForm("Query","Entity"))
+<div>
+    @using (Html.BeginForm("Query", "Entity"))
+    {
+        @Html.HiddenFor(model => model.action)
+        <div class="form-group">
+            @Html.LabelFor(model => model.path)
+            @Html.TextBoxFor(model => model.path, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.path)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.query)
+            @Html.TextBoxFor(model => model.query, new { @class = "form-control", id = "query" })
+            @Html.ValidationMessageFor(model => model.query)
+        </div>
+        <button type="submit" class="btn btn-primary">Crear tabla virtual</button>
+    }
+    <button id="preview" class="btn btn-primary">Resultado</button>
+    <table id="example"></table>
+    <div id="error_table" role="grid"></div>
+</div>
+@section scripts
 {
-    <div class="form-group">
-        @Html.LabelFor(model => model.path)
-        @Html.TextBoxFor(model => model.path, new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.query)
-        @Html.TextBoxFor(model => model.query, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.query)
-    </div>
-    <button type="submit" class="btn btn-primary">Crear tabla virtual</button>
+    <script>
+        $(document).ready(function () {
+            $('#example').append('<thead><tr><th></th></tr></thead><tbody></tbody>');
+            var table= $('#example').DataTable({
+                                destroy: true
+            });
+            console.log(table);
+            $("#preview").on("click", function () {
+               
+                var query = $("#query").val();
+                console.log(query)
+                $.ajax({
+                    url: "/api/query/"+ query,
+                    contentType: "application/json; charset=utf-8",
+                    method: "GET",
+                    data: "",
+                    dataType:"json",
+                    success: function (response) {
+                       
+                        var html = '';
+                        console.log(response);
+                        
+                        if (response.queryState.isCorrect) {
+                            console.log('todo correcto');
+                            console.log(response);
+                            var queryR = response.queryResult;
+                            html += '<thead><tr>';
+                            $.each(queryR.fields, function (_, v) {
+                                html += '<th>' + v.name + '</th>';
+                            });
+                            html += '</tr></thead>';
+                            html += '<tbody>';
+                            $.each(queryR.rows, function (_, r) {
+                                html += '<tr>';
+                                $.each(r.values, function (_, v) {
+                                    html += '<th>' + v + '</th>';
+                                });
+                                html += '</tr>';
+                            });
+                            html += '</tbody>';
+                            table.destroy();
+                            $('#example').empty();
+                            $('#example').html(html);
+                            table= $('#example').DataTable({
+                                destroy: true
+                            });
+                            console.log(html);
+                        }
+                        else {
+              
+                            table.destroy();
+                            $('#example').empty();
+                            $('#example').html('<thead><tr><th></th></tr></thead><tbody></tbody>');
+                            table=$('#example').DataTable({
+                                    destroy: true,
+                                }
+                            );
+                            $('#example tbody').append("<tr class=\"odd\"><td colspan=\"1\" class=\"dataTables_empty\" valign=\"top\">Fallo en parsear la cosulta</td></tr>");
+                        }
+                    }
+                })
+                
+            });
+        }).change();
+    </script>
 }
-

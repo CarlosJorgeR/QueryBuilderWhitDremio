@@ -17,15 +17,15 @@ namespace QueryBuilder.WebApplication.Controllers.Api
         {
             this.client = client;
         }
-        [HttpPost]
-        public IQueryResult ExecuteQuery([FromBody]string query)
+        [HttpGet("{query}")]
+        public IQuery Get(string query)
         {
             return client.ExecuteQuery(query);
         }
-        [HttpGet]
-        public List<Client.Models.Entity> GetAlgo()
-        {
-            return client.Entities;
-        }
+        //[HttpGet]
+        //public List<Client.Models.Entity> GetAlgo()
+        //{
+        //    return client.Entities;
+        //}
     }
 }

@@ -2,6 +2,7 @@
 using QueryBuilder;
 using System.IO;
 using QueryBuilder.DremioApi.Services;
+using QueryBuilder.OdbcConnection.Services;
 using System.Linq;
 namespace QueryBuilder
 {
@@ -16,7 +17,7 @@ namespace QueryBuilder
             var results3 = client.GetCatalogByPath("Dev/Business").ToList();
             //client.CreateVDS("Dev.Business.Algo", "SELECT compras.fecha,compras.cliente FROM Dev.Business.compras as compras ");
             //client.DropVDS("Dev.Business.Algo");
-            var result2 = client.Replace("Dev.Application.Algo", "SELECT \"nombre\", \"tipo\", \"sitio\" FROM \"Dev\".\"Business\".\"empresas\"");
+            new DremioOdbcConnection().odbcConnection("CarlosJ", "CCr.5180", "SELECT compras.fecha,compras.cliente FROM Dev.Business.compras as compras ");
             //Console.WriteLine(result2);
             //client.GetLogin("CarlosJ", "CCr.5180");
             //client.GetEntitys();

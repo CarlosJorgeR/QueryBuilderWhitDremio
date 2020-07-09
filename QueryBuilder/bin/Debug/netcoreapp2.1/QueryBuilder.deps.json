@@ -1,14 +1,15 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "30966add414d16b2cc089d8722ab3f4a62847411"
+    "signature": "a5559ab53bc28bfaf9089fb430cbf5cf53562e70"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "QueryBuilder/1.0.0": {
         "dependencies": {
-          "QueryBuilder.Client": "1.0.0"
+          "QueryBuilder.Client": "1.0.0",
+          "QueryBuilder.OdbcConnection": "1.0.0"
         },
         "runtime": {
           "QueryBuilder.dll": {}
@@ -32,6 +33,14 @@
           "System.Runtime.Extensions": "4.1.0",
           "System.Runtime.InteropServices": "4.1.0",
           "System.Threading": "4.0.11"
+        }
+      },
+      "MSA.NetCore.ODBC/1.0.3": {
+        "runtime": {
+          "lib/netstandard1.6/NetCoreODBC.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Newtonsoft.Json/9.0.1": {
@@ -363,6 +372,14 @@
         "runtime": {
           "QueryBuilder.DremioApi.dll": {}
         }
+      },
+      "QueryBuilder.OdbcConnection/1.0.0": {
+        "dependencies": {
+          "MSA.NetCore.ODBC": "1.0.3"
+        },
+        "runtime": {
+          "QueryBuilder.OdbcConnection.dll": {}
+        }
       }
     }
   },
@@ -378,6 +395,13 @@
       "sha512": "sha512-17h8b5mXa87XYKrrVqdgZ38JefSUqLChUQpXgSnpzsM0nDOhE40FTeNWOJ/YmySGV6tG6T8+hjz6vxbknHJr6A==",
       "path": "microsoft.csharp/4.0.1",
       "hashPath": "microsoft.csharp.4.0.1.nupkg.sha512"
+    },
+    "MSA.NetCore.ODBC/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-45a8GQipfRus6fbTllQqamqc4lbJh/vvtHzuylenEZp0edOEKbMaIJ6l2Kpkr7R6c4jcoImWyP2whhc5O5KFvQ==",
+      "path": "msa.netcore.odbc/1.0.3",
+      "hashPath": "msa.netcore.odbc.1.0.3.nupkg.sha512"
     },
     "Newtonsoft.Json/9.0.1": {
       "type": "package",
@@ -630,6 +654,11 @@
       "sha512": ""
     },
     "QueryBuilder.DremioApi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "QueryBuilder.OdbcConnection/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

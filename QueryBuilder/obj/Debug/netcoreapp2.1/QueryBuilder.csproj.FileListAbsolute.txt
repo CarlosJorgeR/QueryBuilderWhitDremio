@@ -14,3 +14,5 @@ D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBu
 D:\Doc\software\codigo\QueryBuilder\QueryBuilder\obj\Debug\netcoreapp2.1\QueryBuilder.pdb
 D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.Client.dll
 D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.Client.pdb
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.dll
+D:\Doc\software\codigo\QueryBuilder\QueryBuilder\bin\Debug\netcoreapp2.1\QueryBuilder.OdbcConnection.pdb

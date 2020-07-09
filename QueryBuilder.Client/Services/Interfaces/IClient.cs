@@ -15,7 +15,7 @@ namespace QueryBuilder.Client.Services.Interfaces
         List<Entity> Entities { get;  }
         List<VirtualEntity> Apps { get; }
         IEnumerable<IQueryResult> ExecuteQuery(List<BasedQueryEntity> basedQueryEntities);
-        IQueryResult ExecuteQuery(string query);
+        IQuery ExecuteQuery(string query);
         IQueryState CreateVDS(string Name, string query);
         IQueryState ReplaceVDS(string Name, string query);
     }

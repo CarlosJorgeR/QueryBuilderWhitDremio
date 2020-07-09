@@ -9,7 +9,7 @@
 @for (int i = 0; i < ViewBag.apps.Count; i++)
 {
     var app = (Entity)ViewBag.apps[i];
-    <h2>@Html.ActionLink(app.Alias,"Edit",new { id=app.RealName})</h2>
+    <h2>@Html.ActionLink(app.Alias, "Edit", new { id = app.RealName })</h2>
     <table class="table table-sm table-striped table-bordered">
         <thead>
             <tr>
