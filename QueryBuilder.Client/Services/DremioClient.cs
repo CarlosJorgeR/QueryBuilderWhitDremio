@@ -70,7 +70,7 @@ namespace QueryBuilder.Client.Services
         }
         public IQueryState CreateVDS(string Name, string query)
         {
-            if (Apps.Any(a=>a.Alias==Name))
+            if (!Apps.Any(a=>a.Alias==Name))
                return new QueryStateDremio(
                    dremioAPI.CreateVDS($"Dev.Application.{Name}", query)
                     );
@@ -94,6 +94,14 @@ namespace QueryBuilder.Client.Services
             else
                 return new BaseQuery(result, new QueryStateDremio(jobState.COMPLETED));
 
+        }
+        public IQueryState DropVDS(string Name)
+        {
+            if (Apps.Any(a => a.Alias == Name))
+                return new QueryStateDremio(
+                    dremioAPI.DropVDS($"Dev.Application.{Name}")
+                     );
+            return QueryStateDremio.Null;
         }
 
     }

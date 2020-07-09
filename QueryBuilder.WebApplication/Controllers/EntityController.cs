@@ -74,17 +74,25 @@ namespace QueryBuilder.WebApplication.Controllers
             IQueryState state;
             if (viewQuery.action.Value==ActionQuery.Edit)
             {
-                state=client.ReplaceVDS(viewQuery.path, viewQuery.query);
-                if (!state.IsCorrect)
-                    ModelState.AddModelError(nameof(viewQuery.query), "La consulta no es valida para modificar la Tabla virtual");
+                if (!client.Apps.Any(a => a.Alias == viewQuery.path))
+                    ModelState.AddModelError(nameof(viewQuery.path), $"No existe una tabla virtual con nombre {viewQuery.path}");
+                else
+                {
+                    state = client.ReplaceVDS(viewQuery.path, viewQuery.query);
+                    if (!state.IsCorrect)
+                        ModelState.AddModelError(nameof(viewQuery.query), "La consulta no es valida para modificar la Tabla virtual");
+                }
             }
             else
             {
-                state=client.CreateVDS(viewQuery.path, viewQuery.query);
-                if (client.Apps.Any(a=>a.Alias== viewQuery.path))
-                    ModelState.AddModelError(nameof(viewQuery.path), "Ya existe esta tabla virtual");
-                if (!state.IsCorrect)
-                    ModelState.AddModelError(nameof(viewQuery.query), "La consulta no es valida para crear la Tabla virtual");
+                if (client.Apps.Any(a => a.Alias == viewQuery.path))
+                    ModelState.AddModelError(nameof(viewQuery.path), $"Ya existe una tabla virtual con nombre {viewQuery.path}");
+                else
+                {
+                    state = client.CreateVDS(viewQuery.path, viewQuery.query);
+                    if (!state.IsCorrect)
+                        ModelState.AddModelError(nameof(viewQuery.query), "La consulta no es valida para crear la Tabla virtual");
+                }
             }
             if (!ModelState.IsValid)
                 return View(viewQuery);

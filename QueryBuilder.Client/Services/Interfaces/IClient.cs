@@ -18,5 +18,6 @@ namespace QueryBuilder.Client.Services.Interfaces
         IQuery ExecuteQuery(string query);
         IQueryState CreateVDS(string Name, string query);
         IQueryState ReplaceVDS(string Name, string query);
+        IQueryState DropVDS(string Name);
     }
 }

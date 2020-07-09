@@ -1,2 +1,0 @@
-Validacion de la creacion o modificacion de las tablas virtuales
-Escribir una consulta y mostrar un resultado

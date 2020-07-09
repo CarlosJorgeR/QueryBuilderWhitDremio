@@ -5,7 +5,7 @@ namespace QueryBuilder.OdbcConnection.Services
     public class DremioOdbcConnection
     {
         private OdbcCommand OdbcCommand;
-        public DremioOdbcConnection(string uid, string pwd,string sql ,string host = "127.0.0.1", int port = 31010)
+        public DremioOdbcConnection(string uid, string pwd,string host = "127.0.0.1", int port = 31010)
         {
             var driver = "{Dremio Connector}";
             var cnn = new System.Data.Odbc.OdbcConnection($"Driver={driver};ConnectionType=Direct;HOST={host};PORT={port};AuthenticationType=Plain;UID={uid};PWD={pwd}");

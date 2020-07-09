@@ -22,6 +22,12 @@ namespace QueryBuilder.WebApplication.Controllers.Api
         {
             return client.ExecuteQuery(query);
         }
+        [HttpDelete("{vds}")]
+        public IQueryState Delete(string vds)
+        {
+            return client.DropVDS(vds);
+        }
+
         //[HttpGet]
         //public List<Client.Models.Entity> GetAlgo()
         //{
